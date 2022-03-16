@@ -13,7 +13,7 @@ public extension View {
         cornerRadius: CGFloat? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
-        background {
+        self.overlay {
             Color.clear
                 .onChange(of: isPresented.wrappedValue) { show in
                     if show {
