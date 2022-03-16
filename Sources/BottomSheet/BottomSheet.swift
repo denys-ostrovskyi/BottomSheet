@@ -30,7 +30,7 @@ public extension View {
                                 }
                         }
                     } else {
-
+                        BottomSheet.dismiss()
                     }
                 }
         }
