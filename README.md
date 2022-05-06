@@ -14,6 +14,7 @@ Button(action: { show.toggle() }) {
     isPresented: $show,
     detents: .mediumAndLarge,
     shouldScrollExpandSheet: true,
+    modalInPresentation: false,
     largestUndimmedDetent: .medium,
     showGrabber: true,
     cornerRadius: 20
