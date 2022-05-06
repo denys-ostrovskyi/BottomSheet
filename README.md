@@ -2,6 +2,10 @@
 
 Bring to SwiftUI the UIKit bottom sheet capabilities that came with iOS15.
 
+## About fork
+
+This fork brings additional parameter to [prevent dismissal](https://sarunw.com/posts/bottom-sheet-in-ios-15-with-uisheetpresentationcontroller/#prevent-dismissal).
+
 ## Usage
 
 #### Show the bottom sheet
