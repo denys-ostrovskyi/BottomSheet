@@ -8,6 +8,7 @@ public extension View {
         isPresented: Binding<Bool>,
         detents: BottomSheet.Detents = .medium,
         shouldScrollExpandSheet: Bool = true,
+        modalInPresentation: Bool = true,
         largestUndimmedDetent: BottomSheet.LargestUndimmedDetent? = nil,
         showGrabber: Bool = false,
         cornerRadius: CGFloat? = nil,
@@ -20,6 +21,7 @@ public extension View {
                         BottomSheet.present(
                             detents: detents,
                             shouldScrollExpandSheet: shouldScrollExpandSheet,
+                            modalInPresentation: modalInPresentation,
                             largestUndimmedDetent: largestUndimmedDetent,
                             showGrabber: showGrabber,
                             cornerRadius: cornerRadius
@@ -126,13 +128,14 @@ public struct BottomSheet {
     /// Handles the presentation logic of the new UIKit's pageSheet modal presentation style.
     ///
     /// *Sarun's* blog article source: https://sarunw.com/posts/bottom-sheet-in-ios-15-with-uisheetpresentationcontroller/
-    fileprivate static func present<ContentView: View>(detents: Detents, shouldScrollExpandSheet: Bool, largestUndimmedDetent: LargestUndimmedDetent?, showGrabber: Bool, cornerRadius: CGFloat?, @ViewBuilder _ contentView: @escaping () -> ContentView) {
+    fileprivate static func present<ContentView: View>(detents: Detents, shouldScrollExpandSheet: Bool, modalInPresentation: Bool, largestUndimmedDetent: LargestUndimmedDetent?, showGrabber: Bool, cornerRadius: CGFloat?, @ViewBuilder _ contentView: @escaping () -> ContentView) {
         let detailViewController = UIHostingController(rootView: contentView())
         let nav = UINavigationController(rootViewController: detailViewController)
 
         ref = nav
 
         nav.modalPresentationStyle = .pageSheet
+        nav.isModalInPresentation = modalInPresentation
 
         if let sheet = nav.sheetPresentationController {
             sheet.detents = detents.value
